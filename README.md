@@ -7,4 +7,4 @@
 - [ ] Button for generating new array
 - [ ] Add Slider for array size and animation speed
 - [ ] Implement Bubble Sort
-- [ ] Add Graphs to show shorting algorithm
+- [ ] Add Graphs to show sorting algorithm
