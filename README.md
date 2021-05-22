@@ -1,6 +1,6 @@
 # Algorithm Visualizer <hr/>
 
-##TODO :
+## TODO :
 
 - [ ] Setup Navbar
 - [ ] Show option for switching different algorithms
