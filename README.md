@@ -2,6 +2,11 @@
 
 ## TODO :
 
+
+- [x] Algorithm for merge sort
+- [ ] Add animation for array bars in merge sort
+- [ ] Add animation for array bars, show the comparing, swapping and sorted animation.
+- [ ] Implement Bubble Sort algorithm
 - [ ] Setup Navbar
 - [ ] Show option for switching different algorithms
 - [ ] Button for generating new array
