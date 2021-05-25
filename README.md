@@ -4,8 +4,8 @@
 
 
 - [x] Algorithm for merge sort
-- [ ] Add animation for array bars in merge sort
-- [ ] Add animation for array bars, show the comparing, swapping and sorted animation.
+- [x] Add animation for array bars in merge sort
+- [x] Add animation for array bars, show the comparing, swapping and sorted animation.
 - [ ] Implement Bubble Sort algorithm
 - [ ] Setup Navbar
 - [ ] Show option for switching different algorithms
