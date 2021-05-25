@@ -1,9 +1,13 @@
+let animation = [];
+
 const merge = (array, l, mid, h) => {
   const auxArray = [];
   let i = l,
     j = mid + 1;
 
   while (i <= mid && j <= h) {
+    animation.push([i, j, null, null]); //Push the index to be compared to the animation array
+
     if (array[i] <= array[j]) {
       auxArray.push(array[i++]);
     } else {
@@ -12,15 +16,18 @@ const merge = (array, l, mid, h) => {
   }
 
   while (i <= mid) {
+    animation.push([i, null, null, null]);
     auxArray.push(array[i++]);
   }
 
   while (j <= h) {
     auxArray.push(array[j++]);
+    animation.push([null, j, null, null]);
   }
 
   for (i = l; i <= h; i++) {
     array[i] = auxArray[i - l];
+    animation.push([i, null, [...array], null]);
   }
 };
 
@@ -36,11 +43,18 @@ const mergeSortHelper = (array, l, h) => {
 };
 
 const mergeSort = (mainArray) => {
+  animation = []; //Reset Animation array
   const helperArray = [...mainArray];
 
   mergeSortHelper(helperArray, 0, helperArray.length - 1);
 
-  return helperArray;
+  for (let i = 0; i < helperArray.length; i++) {
+    animation.push([null, null, null, i]);
+  }
+
+  return animation;
+
+  // return helperArray;
 };
 
 export default mergeSort;
