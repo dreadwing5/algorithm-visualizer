@@ -1,6 +1,28 @@
 import React, { useState, useEffect } from "react";
-import "./ArrayBlocks.css";
+import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/styles";
+
+const useStyles = makeStyles(() => ({
+  root: {
+    minHeight: "520px",
+    minWidth: "90%",
+    display: "flex",
+    justifyContent: "center",
+  },
+
+  block: {
+    backgroundColor: "turquoise",
+    color: "#282c34",
+    fontSize: "10px",
+    fontWeight: "bold",
+    margin: "0 2px",
+    transitionDuration: "150ms",
+    transitionProperty: "height",
+    transitionTimingFunction: "ease-in",
+  },
+}));
 const ArrayBlocks = ({ blocks, compare, sorted, swap }) => {
+  const classes = useStyles();
   const MIN_WIDTH = 50,
     HEIGHT_FACTOR = 500;
   const [width, setWidth] = useState(
@@ -25,7 +47,7 @@ const ArrayBlocks = ({ blocks, compare, sorted, swap }) => {
   }, [blocks.length]);
 
   return (
-    <div className="array__blocks">
+    <div className={classes.root}>
       {blocks.map((block, i) => {
         const height = (block * HEIGHT_FACTOR) / blocks.length;
 
@@ -51,7 +73,7 @@ const ArrayBlocks = ({ blocks, compare, sorted, swap }) => {
           width: width,
         };
         return (
-          <div key={i} className="block" style={style}>
+          <div key={i} className={classes.block} style={style}>
             {block}
           </div>
         );

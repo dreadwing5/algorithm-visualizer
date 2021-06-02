@@ -88,7 +88,7 @@ const SortingVisualizer = () => {
   };
 
   return (
-    <div>
+    <>
       <ArrayBlocks
         blocks={array}
         compare={sorting && compare}
@@ -101,7 +101,7 @@ const SortingVisualizer = () => {
         <button onClick={() => handleSort("quickSort")}>Quick Sort</button>
         <button onClick={() => handleSort("bubbleSort")}>Bubble Sort</button>
       </div>
-    </div>
+    </>
   );
 };
 
