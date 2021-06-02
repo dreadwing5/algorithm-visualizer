@@ -3,19 +3,19 @@ import {
   makeStyles,
   Toolbar,
   Typography,
-  Button
+  Button,
 } from "@material-ui/core";
-import SplitButton from "./splitButton";
+import SplitButton from "../Buttons/SplitButton";
 import React from "react";
 import AcUnitIcon from "@material-ui/icons/AcUnit";
 const useStyles = makeStyles(() => ({
   typographystyles: {
-    flex: 1
+    flex: 1,
   },
   buttonstyles: {
     color: "white",
-    fullWidth: false
-  }
+    fullWidth: false,
+  },
 }));
 
 const Header = () => {

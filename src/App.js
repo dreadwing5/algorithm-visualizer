@@ -2,11 +2,11 @@ import "./App.css";
 import SortingVisualizer from "./components/SortingVisualizer/SortingVisualizer";
 // import "./styles.css";
 // import { Grid } from "@material-ui/core";
-// import Header from "./header";
+import Header from "./components/Header/Header";
 function App() {
   return (
     <div className="App">
-      <h1 className="heading">Algorithm Visualizer</h1>
+      <Header />
       <SortingVisualizer />
     </div>
   );

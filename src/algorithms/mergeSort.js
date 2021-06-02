@@ -54,8 +54,6 @@ const mergeSort = (mainArray) => {
 
   console.log(animation);
   return animation;
-
-  // return helperArray;
 };
 
 export default mergeSort;
