@@ -26,7 +26,7 @@ const merge = (array, l, mid, h) => {
   }
 
   for (i = l; i <= h; i++) {
-    array[i] = auxArray[i - l];
+    array[i] = auxArray[i - l]; //overwritting
     animation.push([i, null, [...array], null]);
   }
 };
@@ -52,6 +52,7 @@ const mergeSort = (mainArray) => {
     animation.push([null, null, null, i]);
   }
 
+  console.log(animation);
   return animation;
 
   // return helperArray;

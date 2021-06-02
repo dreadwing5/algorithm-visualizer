@@ -11,11 +11,11 @@ const SortingVisualizer = () => {
   // States
   const [algo, setAlgo] = useState("mergeSort");
   const [array, setArray] = useState([]);
-  const [speed, setSpeed] = useState(50);
-  const [len, setLength] = useState(100);
+  const [speed, setSpeed] = useState(5);
+  const [len, setLength] = useState(10);
   const [sorting, setSorting] = useState(false);
   const [completed, setCompleted] = useState(true);
-  const [compare, setCompare] = useState([]);
+  const [compare, setCompare] = useState([]); //state changes, component renrender
   const [swap, setSwap] = useState([]);
   const [sortedIndex, setSortedIndex] = useState([]); //What is the use of this array
 
@@ -44,7 +44,7 @@ const SortingVisualizer = () => {
     for (let i = 0; i < animation.length; i++) {
       await new Promise((resolve) => setTimeout(resolve, speed)); //Set a timer for animation speed
       const [j, k, arr, index] = animation[i];
-      setCompare([j, k]);
+      setCompare([j, k]); //comapre
       setSwap([]);
       console.log("Comparing");
 

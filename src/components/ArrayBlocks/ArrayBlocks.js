@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ArrayBlocks.css";
 const ArrayBlocks = ({ blocks, compare, sorted, swap }) => {
   const MIN_WIDTH = 50,
-    HEIGHT_FACTOR = 500;
+    HEIGHT_FACTOR = 50;
   const [width, setWidth] = useState(
     Math.min(MIN_WIDTH, Math.ceil(window.innerWidth / blocks.length) - 5)
   );
