@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import mergeSort from "../../algorithms/mergeSort";
 import quickSort from "../../algorithms/quickSort";
+import bubbleSort from "../../algorithms/bubbleSort";
 
 import ArrayBlocks from "../ArrayBlocks/ArrayBlocks";
 import "./SortingVisualizer.css";
@@ -77,6 +78,10 @@ const SortingVisualizer = () => {
         sortAnimation(quickSort(array));
         break;
 
+      case "bubbleSort":
+        sortAnimation(bubbleSort(array));
+        break;
+
       default:
         break;
     }
@@ -94,6 +99,7 @@ const SortingVisualizer = () => {
         <button onClick={() => resetArray(len)}>Generate New Array</button>
         <button onClick={() => handleSort("mergeSort")}>Merge Sort</button>
         <button onClick={() => handleSort("quickSort")}>Quick Sort</button>
+        <button onClick={() => handleSort("bubbleSort")}>Bubble Sort</button>
       </div>
     </div>
   );
