@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./ArrayBlocks.css";
 const ArrayBlocks = ({ blocks, compare, sorted, swap }) => {
   const MIN_WIDTH = 50,
-    HEIGHT_FACTOR = 50;
+    HEIGHT_FACTOR = 500;
   const [width, setWidth] = useState(
     Math.min(MIN_WIDTH, Math.ceil(window.innerWidth / blocks.length) - 5)
   );
-  console.log(width);
+  // console.log(width);
   const color =
     blocks.length <= MIN_WIDTH && width > 14 ? "#000814" : "transparent";
 

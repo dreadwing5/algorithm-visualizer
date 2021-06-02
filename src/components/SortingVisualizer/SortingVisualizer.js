@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import mergeSort from "../../algorithms/mergeSort";
+import quickSort from "../../algorithms/quickSort";
 
 import ArrayBlocks from "../ArrayBlocks/ArrayBlocks";
 import "./SortingVisualizer.css";
@@ -11,8 +12,8 @@ const SortingVisualizer = () => {
   // States
   const [algo, setAlgo] = useState("mergeSort");
   const [array, setArray] = useState([]);
-  const [speed, setSpeed] = useState(5);
-  const [len, setLength] = useState(10);
+  const [speed, setSpeed] = useState(10);
+  const [len, setLength] = useState(100);
   const [sorting, setSorting] = useState(false);
   const [completed, setCompleted] = useState(true);
   const [compare, setCompare] = useState([]); //state changes, component renrender
@@ -31,7 +32,7 @@ const SortingVisualizer = () => {
     const tempArray = Array.from({ length: len }, () =>
       generateRandomInt(LOWER_BOUND, UPPER_BOUND)
     );
-    console.log(tempArray);
+    // console.log(tempArray);
     setArray(tempArray);
   };
 
@@ -64,9 +65,21 @@ const SortingVisualizer = () => {
     setCompleted(true);
   };
 
-  const handleSort = () => {
+  const handleSort = (algo) => {
     setSorting(true);
-    sortAnimation(mergeSort(array));
+    setAlgo(algo);
+    switch (algo) {
+      case "mergeSort":
+        sortAnimation(mergeSort(array));
+        break;
+
+      case "quickSort":
+        sortAnimation(quickSort(array));
+        break;
+
+      default:
+        break;
+    }
   };
 
   return (
@@ -79,7 +92,8 @@ const SortingVisualizer = () => {
       />
       <div className="buttons">
         <button onClick={() => resetArray(len)}>Generate New Array</button>
-        <button onClick={() => handleSort()}>Merge Sort</button>
+        <button onClick={() => handleSort("mergeSort")}>Merge Sort</button>
+        <button onClick={() => handleSort("quickSort")}>Quick Sort</button>
       </div>
     </div>
   );
