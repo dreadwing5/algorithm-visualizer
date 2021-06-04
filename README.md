@@ -1,5 +1,9 @@
 # Algorithm Visualizer <hr/>
 
+## DEMO :
+
+![merge-sort-demo](https://github.com/dreadwing5/algorithm-visualizer/blob/main/Merge-sort.gif)
+
 ## TODO :
 
 - [x] Add Array Bars to show sorting algorithm ✅
