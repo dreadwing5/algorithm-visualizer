@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from "react";
-import mergeSort from "../../algorithms/mergeSort";
-import quickSort from "../../algorithms/quickSort";
-import bubbleSort from "../../algorithms/bubbleSort";
 
 import ArrayBlocks from "../ArrayBlocks/ArrayBlocks";
 import "./SortingVisualizer.css";
 
+//Algorithms
+
+import mergeSort from "../algorithms/mergeSort";
+import quickSort from "../algorithms/quickSort";
+import bubbleSort from "../algorithms/bubbleSort";
+
 const generateRandomInt = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  return Math.floor(Math.random() * (max - min + 1) + min); //Generate array in interval
 };
 const SortingVisualizer = () => {
   // States
   const [algo, setAlgo] = useState("mergeSort");
   const [array, setArray] = useState([]);
-  const [speed, setSpeed] = useState(10);
+  const [speed, setSpeed] = useState(5);
   const [len, setLength] = useState(100);
   const [sorting, setSorting] = useState(false);
   const [completed, setCompleted] = useState(true);
+
+  //Animation
   const [compare, setCompare] = useState([]); //state changes, component renrender
   const [swap, setSwap] = useState([]);
   const [sortedIndex, setSortedIndex] = useState([]); //What is the use of this array
@@ -39,7 +44,22 @@ const SortingVisualizer = () => {
 
   useEffect(() => {
     resetArray(len);
-  }, [len]);
+  }, [len, algo]);
+
+  // setting the selected algorithm
+  const handleAlgo = (event) => {
+    setAlgo(event.target.value);
+  };
+
+  // handling the length of the array
+  const handleLength = (event) => {
+    setLength(Number(event.target.value));
+  };
+
+  // handling the speed of sorting
+  const handleSpeed = (event) => {
+    setSpeed(Math.ceil(400 / Number(event.target.value)));
+  };
 
   //Handle Sort animation
   const sortAnimation = async (animation) => {
@@ -51,7 +71,7 @@ const SortingVisualizer = () => {
       console.log("Comparing");
 
       if (index !== null) {
-        setSortedIndex((prevState) => [...prevState, index]);
+        setSortedIndex((prevState) => [...prevState, index]); //Render the ui
       }
 
       if (arr) {
@@ -95,12 +115,12 @@ const SortingVisualizer = () => {
         swap={sorting && swap}
         sorted={sortedIndex}
       />
-      <div className="buttons">
+      {/*  <div className="buttons">
         <button onClick={() => resetArray(len)}>Generate New Array</button>
         <button onClick={() => handleSort("mergeSort")}>Merge Sort</button>
         <button onClick={() => handleSort("quickSort")}>Quick Sort</button>
         <button onClick={() => handleSort("bubbleSort")}>Bubble Sort</button>
-      </div>
+      </div> */}
     </>
   );
 };

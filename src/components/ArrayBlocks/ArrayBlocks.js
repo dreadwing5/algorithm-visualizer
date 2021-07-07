@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Container from "@material-ui/core/Container";
+
+import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(() => ({
@@ -20,27 +21,33 @@ const useStyles = makeStyles(() => ({
     transitionProperty: "height",
     transitionTimingFunction: "ease-in",
   },
+  text: {
+    textAlign: "center",
+    fontFamily: `Montserrat, sans-serif`,
+    fontWeight: 700,
+  },
+  dot: {
+    height: "20px",
+    width: "20px",
+    backgroundColor: "#e9c46a",
+    borderRadius: "50%",
+    display: "inline-block",
+  },
+  hidden: {
+    display: "none",
+  },
 }));
 const ArrayBlocks = ({ blocks, compare, sorted, swap }) => {
   const classes = useStyles();
-  const MIN_WIDTH = 50,
-    HEIGHT_FACTOR = 500;
+  const MIN_WIDTH = 20;
+  let HEIGHT_FACTOR = 5;
   const [width, setWidth] = useState(
     Math.min(MIN_WIDTH, Math.ceil(window.innerWidth / blocks.length) - 5)
   );
-  // console.log(width);
   const color =
-    blocks.length <= MIN_WIDTH && width > 14 ? "#000814" : "transparent";
+    blocks.length <= MIN_WIDTH || width > 16 ? "#264653" : "transparent";
 
   useEffect(() => {
-    const handleResize = () => {
-      setWidth(
-        Math.min(MIN_WIDTH, Math.ceil(window.innerWidth / blocks.length) - 8)
-      );
-    };
-
-    window.addEventListener("resize", handleResize);
-
     setWidth(
       Math.min(MIN_WIDTH, Math.ceil(window.innerWidth / blocks.length) - 8)
     );
@@ -49,9 +56,9 @@ const ArrayBlocks = ({ blocks, compare, sorted, swap }) => {
   return (
     <div className={classes.root}>
       {blocks.map((block, i) => {
-        const height = (block * HEIGHT_FACTOR) / blocks.length;
+        const height = block * HEIGHT_FACTOR;
 
-        let bg = "#e5b3fe";
+        let bg = "#90e0ef";
 
         // i th element is being compared with some other element
         if (compare && (i === compare[0] || i === compare[1])) {
@@ -74,7 +81,15 @@ const ArrayBlocks = ({ blocks, compare, sorted, swap }) => {
         };
         return (
           <div key={i} className={classes.block} style={style}>
-            {block}
+            <span
+              className={
+                blocks.length <= MIN_WIDTH || width > 16
+                  ? classes.dot
+                  : classes.hidden
+              }
+            >
+              <Typography className={classes.text}>{block}</Typography>
+            </span>
           </div>
         );
       })}

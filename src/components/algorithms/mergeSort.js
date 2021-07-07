@@ -56,4 +56,6 @@ const mergeSort = (mainArray) => {
   return animation;
 };
 
+// mergeSort([1, 5, 7, 9, 8]);
+
 export default mergeSort;
