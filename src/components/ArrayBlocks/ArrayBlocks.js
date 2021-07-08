@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles(() => ({
   root: {
-    minHeight: "520px",
+    minHeight: "80vh",
     minWidth: "90%",
     display: "flex",
     justifyContent: "center",

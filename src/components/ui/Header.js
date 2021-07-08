@@ -4,11 +4,7 @@ import {
   Toolbar,
   Typography,
   Button,
-  FormControl,
   MenuItem,
-  InputLabel,
-  Select,
-  Icon,
   Slider,
   Menu,
 } from "@material-ui/core";

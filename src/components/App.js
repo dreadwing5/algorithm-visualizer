@@ -10,6 +10,7 @@ import bubbleSort from "./algorithms/bubbleSort";
 
 import ArrayBlocks from "./ArrayBlocks/ArrayBlocks";
 import Legends from "./ui/Legends";
+import InfoBar from "./InfoBar/InfoBar";
 
 const generateRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min); //Generate array in interval
@@ -146,6 +147,7 @@ function App() {
         sorted={sortedIndex}
       />
       <Legends algo={algo} />
+      <InfoBar algo={algo} />
     </ThemeProvider>
   );
 }
