@@ -4,53 +4,80 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import merge from "./merge.jpg";
 
+import merge from "./merge.jpg";
 import selection from "./selection.jpg";
 import quick from "./quick.png";
-import insert from "./insertion.jpg";
+import insertion from "./insertion.jpg";
 import bubble from "./bubble.jpg";
 
-let sort = [merge, quick, insert, selection, bubble];
-
-const algo = {
-  Merge: {
+const algorithms = {
+  mergeSort: {
     name: "Merge",
     best: "O ( nlog (n) )",
     worst: "O ( nlog (n) )",
-    average: "O ( nlog (n) )"
+    average: "O ( nlog (n) )",
+    img: merge,
+    description: (
+      <div>
+        <p>
+          <a
+            href="https://en.wikipedia.org/wiki/Merge_sort"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Merge Sort
+          </a>{" "}
+          is an efficient, stable sorting algorith that makes use of the divide
+          and conquer strategy. Conceptually the algorithm works as follows:
+        </p>
+        <ol>
+          <li>
+            Divide the unsorted list into <em>n</em> sublists, each containing
+            one element(a list of one element is considered sorted)
+          </li>
+          <li>
+            Repeatedly merge sublists to produce new sorted sublists until there
+            is only one sublist remaining. This will be the sorted list.
+          </li>
+        </ol>
+      </div>
+    )
   },
 
-  Quick: {
+  quickSort: {
     name: "Quick",
     best: "O ( nlog (n) )",
     worst: "O ( n^2 )",
-    average: "O ( nlog (n) )"
+    average: "O ( nlog (n) )",
+    img: quick
   },
 
-  Insertion: {
+  insertionSort: {
     name: "Insertion",
     worst: "O ( n^2 )",
     average: "O ( n^2 )",
-    best: "O ( n )"
+    best: "O ( n )",
+    img: insertion
   },
 
-  Selection: {
+  selectionSort: {
     name: "Selection",
     worst: "O ( n^2 )",
     average: "	Θ ( n^2 )",
-    best: "Ω ( n^2 )"
+    best: "Ω ( n^2 )",
+    img: selection
   },
 
-  Bubble: {
+  bubbleSort: {
     name: "Bubble",
     worst: "O ( n^2 )",
     average: "O (  n^2 )",
-    best: "O ( n )"
+    best: "O ( n )",
+    img: bubble
   }
 };
 
-let display = algo.Merge.name;
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1
@@ -63,6 +90,7 @@ const useStyles = makeStyles((theme) => ({
     width: 500,
     height: 500
   },
+
   img: {
     margin: "auto",
     display: "block",
@@ -71,40 +99,44 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Infobar() {
+export default function Infobar({ algo }) {
   const classes = useStyles();
-
+  algo = "mergeSort";
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
-          <Grid item>
+          {/* <Grid item>
             <Typography gutterBottom variant="subtitle1">
               {display} Sort
             </Typography>
-          </Grid>
-          <Grid item>
-            <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="complex" src={merge} />
-            </ButtonBase>
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <h3>Time Complexity</h3>
-                <br />
+          </Grid> */}
+          <Grid item xs={6} sm container>
+            <h2>Analysis</h2>
+            <br />
+            {algorithms[algo].description}
 
-                <Typography gutterBottom variant="title1">
-                  Best Case : {algo.Merge.worst}
-                </Typography>
-                <br />
-                <Typography gutterBottom variant="title1">
-                  Average Case : {algo.Merge.average}
-                </Typography>
-                <br />
-                <Typography gutterBottom variant="title1">
-                  Worst Case : {algo.Merge.worst}
-                </Typography>
+            <h4>Time Complexity</h4>
+            <br />
+
+            <Typography gutterBottom variant="title1"></Typography>
+            <br />
+            <Typography gutterBottom variant="title1">
+              Best Case : {algorithms[algo].best} | Average Case :
+              {algorithms[algo].average} | Worst Case : {algorithms[algo].worst}
+            </Typography>
+            <br />
+            <Typography gutterBottom variant="title1"></Typography>
+          </Grid>
+
+          <Grid item xs={6} sm container>
+            <Grid item xs container direction="column">
+              <Grid item xs>
+                <img
+                  className={classes.img}
+                  alt="complex"
+                  src={algorithms[algo].img}
+                />
               </Grid>
             </Grid>
           </Grid>
